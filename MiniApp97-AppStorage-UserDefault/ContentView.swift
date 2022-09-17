@@ -8,15 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("Key") var textByAppStorage = ""
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+
+            TextField("名前を教えて下さい", text: $textByAppStorage)
+                .padding()
+
+            Text(textByAppStorage)
+                .padding()
+
+            Text(UserDefaults.standard.string(forKey: "Key") ?? "")
+                .padding()
         }
         .padding()
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
